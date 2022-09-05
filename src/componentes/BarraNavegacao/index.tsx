@@ -48,7 +48,11 @@ const BarraNavegacao = () => {
                 <BotaoNavegacao texto="Login" textoAltSrc="Icone representando um usuário" imagemSrc={usuario} />
             </li>
             <li>
-                <BotaoNavegacao texto="Cadastrar-se" textoAltSrc="Icone representando um usuário" imagemSrc={usuario} />
+                <BotaoNavegacao
+                    texto="Cadastrar-se"
+                    textoAltSrc="Icone representando um usuário"
+                    imagemSrc={usuario}
+                />
             </li>
         </ul>
     </nav>)
