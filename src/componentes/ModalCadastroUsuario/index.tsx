@@ -1,5 +1,5 @@
-import { AbBotao, AbCampoTexto, AbModal } from "ds-alurabooks"
-import { useState } from "react"
+import { AbBotao, AbCampoTexto, AbModal } from 'ds-alurabooks'
+import { useState } from 'react'
 
 import imagemPrincipal from './assets/login.png'
 
@@ -15,73 +15,56 @@ const ModalCadastroUsuario = () => {
     const [senha, setSenha] = useState('')
     const [senhaConfirmada, setSenhaConfirmada] = useState('')
 
-    const aoSubmeterFormular = (evento: React.FormEvent<HTMLFormElement>) => {
-        evento.preventDefault()
-        const usuario = {
-            nome,
-            email,
-            senha,
-            endereco,
-            cep,
-            complemento
-        }
-        console.log(usuario)
-        alert('Usuário foi cadastrado com sucesso!')
-    }
-
-    return (<AbModal 
-        titulo="Cadastrar" 
+    return (<AbModal
+        titulo="Cadastrar"
         aberta={true}
-        aoFechar={() => console.log('fecha ai')}    
+        aoFechar={() => console.log('fecha ai')}
     >
-        <section className="corpoModalCadastro">
+        <div className='corpoModalCadastro'>
             <figure>
-                <img src={imagemPrincipal} alt="Pessoa segurando uma chave na frente de uma tela de computador que está exibindo uma fechadura" />
+                <img src={imagemPrincipal} alt="Monitor com uma fechadura e uma pessoa com uma chave logo ao lado." />
             </figure>
-            <form onSubmit={aoSubmeterFormular}>
-                <AbCampoTexto 
-                    label="Nome"
+            <form>
+                <AbCampoTexto
                     value={nome}
+                    label='Nome'
                     onChange={setNome}
                 />
-                <AbCampoTexto 
-                    label="E-mail"
+                <AbCampoTexto
                     value={email}
+                    label='E-mail'
                     onChange={setEmail}
-                    type="email"
                 />
-                <AbCampoTexto 
-                    label="Endereço"
+                <AbCampoTexto
                     value={endereco}
+                    label='Endereço'
                     onChange={setEndereco}
                 />
-                <AbCampoTexto 
-                    label="Complemento"
+                <AbCampoTexto
                     value={complemento}
+                    label='Complemento'
                     onChange={setComplemento}
                 />
-                <AbCampoTexto 
-                    label="CEP"
+                <AbCampoTexto
                     value={cep}
+                    label='CEP'
                     onChange={setCep}
                 />
-                <AbCampoTexto 
-                    label="Senha"
+                <AbCampoTexto
                     value={senha}
+                    label='Senha'
                     onChange={setSenha}
-                    type="password"
                 />
-                <AbCampoTexto 
-                    label="Confirmação da senha"
+                <AbCampoTexto
                     value={senhaConfirmada}
+                    label='Confirmar senha'
                     onChange={setSenhaConfirmada}
-                    type="password"
                 />
-                <div className="acoes">
-                    <AbBotao texto="Cadastrar"/>
-                </div>
+                <footer>
+                    <AbBotao texto='Cadastrar' />
+                </footer>
             </form>
-        </section>
+        </div>
     </AbModal>)
 }
 
