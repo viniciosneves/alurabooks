@@ -1,10 +1,11 @@
 import { Link, Outlet } from "react-router-dom"
+import TituloPrincipal from "../../componentes/TituloPrincipal"
 
 import './AreaLogada.css'
 
 const AreaLogada = () => {
     return (<>
-        <h1 className="AreaLogada__titulo">Minha conta</h1>
+        <TituloPrincipal texto="Minha conta" />
         <section className="AreaLogada">
             <div className="menu">
                 <ul className="navegacao">

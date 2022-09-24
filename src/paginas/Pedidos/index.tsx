@@ -1,24 +1,15 @@
 import { AbBotao } from "ds-alurabooks"
-import { useEffect, useState } from "react"
-import { IPedido } from "../../interfaces/IPedido"
-import http from "../../http"
 import './Pedidos.css'
+import { formatador } from "../../utils/formatador-moeda"
+import { usePedidos } from "../../hooks/queries"
 
 const Pedidos = () => {
 
-    const formatador = Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' });
-
-    const [pedidos, setPedidos] = useState<IPedido[]>([])
-
-    useEffect(() => {
-        http.get<IPedido[]>('pedidos')
-            .then(resposta => setPedidos(resposta.data))
-            .catch(erro => console.log(erro))
-    }, [])
+    const { data: pedidos } = usePedidos()
 
     return (<section className="pedidos">
         <h1>Meus pedidos</h1>
-        {pedidos.map(pedido => (<div className="pedido" key={pedido.id}>
+        {pedidos?.map(pedido => (<div className="pedido" key={pedido.id}>
             <ul>
                 <li>Pedido: <strong>{pedido.id}</strong></li>
                 <li>Data do pedido: <strong>{new Date(pedido.data).toLocaleDateString()}</strong></li>

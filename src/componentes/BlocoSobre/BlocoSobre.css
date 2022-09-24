@@ -1,0 +1,17 @@
+.bloco-sobre {
+    padding: 12px 24px;
+}
+.bloco-sobre h2 {
+    font-weight: 700;
+    font-size: 20px;
+    color: #002F52;
+    border-bottom: 2px solid #EB9B00;
+    display: inline-block;
+    padding: 12px 24px;
+}
+.bloco-sobre p {
+    text-align: justify;
+    font-size: 14px;
+
+    color: rgba(0, 0, 0, 0.85);
+}

@@ -1,7 +1,16 @@
+import { IOpcaoCompra } from "./IOpcaoCompra"
+
 export interface ILivro {
-    nome: string
+    id: number
+    categoria: number
+    titulo: string
+    slug: string
     descricao: string
-    autor: string
-    imagem: string
-    preco: number
+    isbn: string
+    numeroPaginas: number
+    publicacao: string
+    imagemCapa: string
+    autor: number
+    opcoesCompra: IOpcaoCompra[]
+    sobre: string
 }

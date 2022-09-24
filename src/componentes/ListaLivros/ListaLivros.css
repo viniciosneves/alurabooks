@@ -1,0 +1,27 @@
+.livros {
+    display: flex;
+    justify-content: space-around;
+    gap: 24px;
+    flex-wrap: wrap;
+    max-width: 80%;
+    margin: 24px auto;
+}
+
+.livros .livro {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 180px;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.livros .livro img {
+    max-width: 100%;
+    margin-bottom: 12px;
+}
+
+.livros .link-container {
+    margin-top: 16px;
+}
