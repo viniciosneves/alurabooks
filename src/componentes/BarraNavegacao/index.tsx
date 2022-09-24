@@ -54,7 +54,7 @@ const BarraNavegacao = () => {
                     textoAltSrc="Icone representando um usuário"
                     imagemSrc={usuario}
                 />
-                <ModalCadastroUsuario />
+                {/* <ModalCadastroUsuario /> */}
             </li>
         </ul>
     </nav>)
