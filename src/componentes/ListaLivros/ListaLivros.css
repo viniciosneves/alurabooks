@@ -6,6 +6,9 @@
     max-width: 80%;
     margin: 24px auto;
 }
+.livros .livro ul {
+    width: 100%;
+}
 
 .livros .livro {
     display: flex;
