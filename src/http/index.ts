@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ICategoria } from "../interfaces/ICategoria";
+import { ILivro } from "../interfaces/ILivro";
 
 const http = axios.create({
     baseURL: 'http://localhost:8000',
@@ -31,4 +32,9 @@ export const obterCategoriaPorSlug = async (slug: string) => {
     }
   })
   return resposta.data[0]
+}
+
+export const obterLivrosDestaque = async (tipo: string) => {
+  const resposta = await http.get<ILivro[]>(`public/${tipo}`)
+  return resposta.data
 }

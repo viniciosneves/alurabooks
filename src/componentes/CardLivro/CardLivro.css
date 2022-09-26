@@ -1,0 +1,22 @@
+.livro ul {
+    width: 100%;
+}
+
+.livro {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 180px;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.livro img {
+    max-width: 100%;
+    margin-bottom: 12px;
+}
+
+.livro .link-container {
+    margin-top: 16px;
+}
