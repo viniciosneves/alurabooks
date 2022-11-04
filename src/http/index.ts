@@ -43,7 +43,7 @@ export const obterLivrosDestaque = async (tipo: string) => {
 export const obterProdutosDaCategoria = async (categoria: ICategoria) => {
   const resposta = await http.get<ILivro[]>('livros', {
     params: {
-      categoria: categoria.id
+      categoriaId: categoria.id
     }
   })
   return resposta.data

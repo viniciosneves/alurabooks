@@ -6,3 +6,13 @@
     max-width: 80%;
     margin: 24px auto;
 }
+
+.busca {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.busca .botaoContainer {
+    margin-top: 16px;
+}

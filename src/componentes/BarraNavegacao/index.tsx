@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useReactiveVar } from "@apollo/client"
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import http from "../../http"
-import { ICategoria } from "../../interfaces/ICategoria"
+import { categoriasVar } from "../../graphql/categorias/state"
+import { useCategorias } from "../../graphql/categorias/hooks/useCategorias"
 import BotaoNavegacao from "../BotaoNavegacao"
 import ModalCadastroUsuario from "../ModalCadastroUsuario"
 import ModalLoginUsuario from "../ModalLoginUsuario"
@@ -9,20 +10,35 @@ import logo from './assets/logo.png'
 import usuario from './assets/usuario.svg'
 import './BarraNavegacao.css'
 
+// const OBTER_CATEGORIAS = gql`
+//   query ObterCategorias {
+//     categorias {
+//       id
+//       nome
+//       slug
+//     }
+//   }
+// `
+
 const BarraNavegacao = () => {
 
     const [modalCadastroAberta, setModalCadastroAberta] = useState(false)
     const [modalLoginAberta, setModalLoginAberta] = useState(false)
 
-    const [categorias, setCategorias] = useState<ICategoria[]>([])
+    useCategorias()
+    const categorias = useReactiveVar(categoriasVar);
 
-    useEffect(() => {
-        http.get<ICategoria[]>('categorias')
-            .then(resposta => {
-                console.log(resposta.data)
-                setCategorias(resposta.data)
-            })
-    }, [])
+    // const { data } = useQuery<{ categorias: ICategoria[] }>(OBTER_CATEGORIAS)
+
+    // const [categorias, setCategorias] = useState<ICategoria[]>([])
+
+    // useEffect(() => {
+    //     http.get<ICategoria[]>('categorias')
+    //         .then(resposta => {
+    //             console.log(resposta.data)
+    //             setCategorias(resposta.data)
+    //         })
+    // }, [])
 
     let navigate = useNavigate();
 
@@ -93,7 +109,7 @@ const BarraNavegacao = () => {
                         <Link to="/minha-conta/pedidos">Minha conta</Link>
                     </li>
                     <li>
-                        <BotaoNavegacao 
+                        <BotaoNavegacao
                             texto="Logout"
                             textoAltSrc="Icone representando um usuário"
                             imagemSrc={usuario}

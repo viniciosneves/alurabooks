@@ -32,7 +32,7 @@ const LivrosDestaque = ({ livros }: LivrosDestaqueProps) => {
                             onClick={() => selecionarLivro(livro)}
                             className={selecionado?.titulo === livro.titulo ? 'selecionado' : ''}
                         >
-                            <img src={livro.imagemCapa} alt={`Capa do livro ${livro.titulo} escrito por ${livro.autor}`} />
+                            <img src={livro.imagemCapa} alt={`Capa do livro ${livro.titulo} escrito por ${livro.autorId}`} />
                         </li>)
                 })}
             </ul>
@@ -44,7 +44,7 @@ const LivrosDestaque = ({ livros }: LivrosDestaqueProps) => {
                 </header>
                 <h6>{selecionado?.titulo}</h6>
                 <p>{selecionado?.descricao}</p>
-                <p>Por: {selecionado?.autor}</p>
+                <p>Por: {selecionado?.autorId}</p>
                 <footer>
                     <div className="preco">
                         <em>A partir de:</em>

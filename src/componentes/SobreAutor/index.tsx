@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 import { obterAutor } from "../../http"
+import { IAutor } from "../../interfaces/IAutor"
 import BlocoSobre from "../BlocoSobre"
 
 interface SobreAutorProps {
-    autorId: number
+    autor: IAutor
 }
 
-const SobreAutor = ({ autorId } : SobreAutorProps) => {
-    const { data: autor } = useQuery(['autor', autorId], () => obterAutor(autorId))
-
+const SobreAutor = ({ autor } : SobreAutorProps) => {
     return <BlocoSobre titulo="Sobre o Autor" corpo={autor?.sobre} />
 }
 

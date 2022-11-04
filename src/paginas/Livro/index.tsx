@@ -1,14 +1,10 @@
-import { useQuery } from "@tanstack/react-query"
-import { AxiosError } from "axios"
-import { AbBotao, AbGrupoOpcao, AbGrupoOpcoes, AbInputQuantidade } from "ds-alurabooks"
+import { AbBotao, AbGrupoOpcao, AbGrupoOpcoes, AbInputQuantidade, AbTag } from "ds-alurabooks"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import BlocoSobre from "../../componentes/BlocoSobre"
 import Loader from "../../componentes/Loader"
-import SobreAutor from "../../componentes/SobreAutor"
 import TituloPrincipal from "../../componentes/TituloPrincipal"
-import { obterLivro } from "../../http"
-import { ILivro } from "../../interfaces/ILivro"
+import { useLivro } from "../../graphql/livros/hooks/useLivro"
 import { formatador } from "../../utils/formatador-moeda"
 
 import './Livro.css'
@@ -18,19 +14,22 @@ const Livro = () => {
 
     const [opcao, setOpcao] = useState<AbGrupoOpcao>()
 
-    const { data: livro, isLoading, error } = useQuery<ILivro | null, AxiosError>(['livro', params.slug], () => obterLivro(params.slug || ''))
+    // const { data: livro, isLoading, error } = useQuery<ILivro | null, AxiosError>(['livro', params.slug], () => obterLivro(params.slug || ''))
+
+    const { data, loading, error } = useLivro(params.slug!);
 
     if (error) {
         console.log('Alguma coisa deu errada')
-        console.log(error.message)
+        console.log(error)
         return <h1>Ops! Algum erro inesperado aconteceu</h1>
     }
-
-    if (livro === null) {
+    
+    if ( !data || !data.livro === null) {
         return <h1>Livro não encontrado!</h1>
     }
+    const { livro } = data;
 
-    if (isLoading || !livro) {
+    if (loading || !livro) {
         return <Loader />
     }
 
@@ -73,8 +72,11 @@ const Livro = () => {
                     </div>
                 </div>
                 <div>
-                    <SobreAutor autorId={livro.autor} />
+                    <BlocoSobre titulo="Sobre o Autor" corpo={livro.autor.sobre} />
                     <BlocoSobre titulo="Sobre o Livro" corpo={livro.sobre} />
+                    <div className="tags">
+                        {livro?.tags?.map(tag => <AbTag contexto="secundario" key={tag.nome} texto={tag.nome}/>)}
+                    </div>
                 </div>
             </div>
         </section>
