@@ -1,0 +1,18 @@
+.pagina-carrinho .conteudo {
+    width: 820px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.pagina-carrinho .conteudo footer {
+    border-top: 1px solid #000;
+    margin-top: 24px;
+    padding-top: 32px;
+    margin-bottom: 128px;
+}
+.pagina-carrinho .conteudo footer ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+}

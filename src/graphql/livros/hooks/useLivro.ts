@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client"
 import { ILivro } from "../../../interfaces/ILivro"
 
-const OBTER_LIVRO = gql`
+export const OBTER_LIVRO = gql`
     query ObterLivro($slug: String!) {
         livro(slug: $slug) {
             id
@@ -11,6 +11,7 @@ const OBTER_LIVRO = gql`
             slug
             sobre
             autor {
+                id
                 nome
                 sobre
             }

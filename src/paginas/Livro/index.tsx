@@ -2,21 +2,26 @@ import { AbBotao, AbGrupoOpcao, AbGrupoOpcoes, AbInputQuantidade, AbTag } from "
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import BlocoSobre from "../../componentes/BlocoSobre"
+import { useCarrinhoContext } from "../../componentes/CarrinhoContextProvider"
 import Loader from "../../componentes/Loader"
+import LoaderPaginaInteira from "../../componentes/LoaderPaginaInteira"
 import TituloPrincipal from "../../componentes/TituloPrincipal"
 import { useLivro } from "../../graphql/livros/hooks/useLivro"
 import { formatador } from "../../utils/formatador-moeda"
 
 import './Livro.css'
 
+
 const Livro = () => {
+
     const params = useParams()
 
     const [opcao, setOpcao] = useState<AbGrupoOpcao>()
+    const [quantidade, setQuantidade] = useState(1)
 
-    // const { data: livro, isLoading, error } = useQuery<ILivro | null, AxiosError>(['livro', params.slug], () => obterLivro(params.slug || ''))
 
     const { data, loading, error } = useLivro(params.slug!);
+    const { carregando, adicionarItem } = useCarrinhoContext()
 
     if (error) {
         console.log('Alguma coisa deu errada')
@@ -41,8 +46,21 @@ const Livro = () => {
     }))
         : []
 
+    const adicionarAoCarrinho = () => {
+        const opcaoCompra = livro.opcoesCompra.find(op => op.id === opcao?.id)
+        if (!opcao || !opcaoCompra) {
+            return
+        }
+        adicionarItem({
+            livro,
+            opcaoCompra,
+            quantidade
+        })
+    }
+
     return (
         <section className="livro-detalhe">
+            {carregando && <LoaderPaginaInteira />}
             <TituloPrincipal texto="Detalhes do Livro" />
             <div className="">
                 <div className="container">
@@ -63,10 +81,10 @@ const Livro = () => {
                         <p><strong>*Você terá acesso às futuras atualizações do livro.</strong></p>
                         <footer>
                             <div className="qtdContainer">
-                                <AbInputQuantidade />
+                                <AbInputQuantidade value={quantidade} onChange={setQuantidade}/>
                             </div>
                             <div>
-                                <AbBotao texto="Comprar" />
+                                <AbBotao texto="Comprar" onClick={adicionarAoCarrinho}/>
                             </div>
                         </footer>
                     </div>

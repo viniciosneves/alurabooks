@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import AreaLogada from "../paginas/AreaLogada"
+import Carrinho from "../paginas/Carrinho"
 import Categoria from "../paginas/Categoria"
 import Home from "../paginas/Home"
 import Livro from "../paginas/Livro"
@@ -16,6 +17,7 @@ const Rotas = () => {
       </Route>
       <Route path="/categorias/:slug" element={<Categoria />}/>
       <Route path="/livro/:slug" element={<Livro />} />
+      <Route path="/minha-sacola" element={<Carrinho />} />
     </Route>
   </Routes>)
 }

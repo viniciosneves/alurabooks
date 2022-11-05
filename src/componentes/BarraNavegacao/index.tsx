@@ -9,6 +9,7 @@ import ModalLoginUsuario from "../ModalLoginUsuario"
 import logo from './assets/logo.png'
 import usuario from './assets/usuario.svg'
 import './BarraNavegacao.css'
+import MiniCarrinho from "../MiniCarrinho"
 
 // const OBTER_CATEGORIAS = gql`
 //   query ObterCategorias {
@@ -40,7 +41,7 @@ const BarraNavegacao = () => {
     //         })
     // }, [])
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const token = sessionStorage.getItem('token')
 
@@ -107,6 +108,9 @@ const BarraNavegacao = () => {
                 <>
                     <li>
                         <Link to="/minha-conta/pedidos">Minha conta</Link>
+                    </li>
+                    <li>
+                        <MiniCarrinho />
                     </li>
                     <li>
                         <BotaoNavegacao

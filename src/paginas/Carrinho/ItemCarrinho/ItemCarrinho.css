@@ -1,0 +1,50 @@
+.item-carrinho {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 36px;
+}
+
+.item-carrinho figure {
+    margin: 0;
+}
+
+.item-carrinho figure img {
+    max-width: 124px;
+}
+
+.item-carrinho .detalhes {
+    flex-grow: 1;
+}
+
+.item-carrinho .detalhes .titulo {
+    font-weight: 700;
+    font-size: 24px;
+    color: #002F52;
+}
+
+.item-carrinho .quantidade {
+    padding: 0 32px;
+}
+
+.item-carrinho .detalhes .descricao {
+    max-width: 160px;
+}
+
+.item-carrinho .detalhes ul li {
+    margin-bottom: 12px;
+}
+
+.item-carrinho .preco {
+    text-align: center;
+}
+
+.item-carrinho .preco .label {
+    margin-bottom: 16px;
+}
+
+.item-carrinho .btn-excluir {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

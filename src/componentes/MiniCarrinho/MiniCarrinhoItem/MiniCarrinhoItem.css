@@ -1,0 +1,20 @@
+.mini-carrinho-item h5 {
+    color: #002F52;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+.mini-carrinho-item h6 {
+    color: rgba(0, 0, 0, 0.85);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.mini-carrinho-item {
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #EB9B00;
+}
